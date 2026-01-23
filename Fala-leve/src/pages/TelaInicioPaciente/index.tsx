@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import { useState } from 'react';
 
 
-export function Login(){
+export function TelaInicioPaciente(){
 
     const navegacao = useNavigate();
 

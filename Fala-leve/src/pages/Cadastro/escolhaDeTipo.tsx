@@ -10,6 +10,23 @@ export function TipoUser(){
     const [tipoSelecionado, setTipoSelecionado] = useState('');
     const [erro, setErro] = useState('');
 
+    const dadosAntigos = JSON.parse(localStorage.getItem('cadastro_usuario') || '{}');
+
+    const dadosAtualizados = {
+        ...dadosAntigos,
+        tipoUsuario: tipoSelecionado
+    }
+
+    if (tipoSelecionado === 'medico') {
+        navegacao('/medico');
+    }
+
+    if (tipoSelecionado === 'paciente') {
+        navegacao('/prontuario');
+    }
+
+    localStorage.setItem('cadastro_usuario', JSON.stringify(dadosAtualizados));
+
     function escolha(){
 
         if(tipoSelecionado === ''){
@@ -53,7 +70,7 @@ export function TipoUser(){
                                 <option value="" disabled hidden>Escolha qual seu tipo de Usuario</option>
                                 <option value="medico">Medico</option>
                                 <option value="responsavel">Responsavel</option>
-                                <option value="paciente">Passiente não Verbal</option>
+                                <option value="paciente">Paciente não Verbal</option>
                             </select>
                             {erro && <span className={styles.mgErro}>{erro}</span>}
                              <button type="button" onClick={escolha}>Proximo</button>

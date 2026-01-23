@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 import styles from './styles.module.css'
 import { useState } from 'react';
 
@@ -9,13 +9,14 @@ export function Cadastro(){
 
     const [formatarDado, setFormatarDado] = useState({
         nome: '',
-        Email: '',
-        Senha: '',
+        email: '',
+        senha: '',
         confirmarSenha: '',
         dataNascimento: '' 
     });
 
     const [erro, setErro] = useState('');
+
 
     function liberarcampo(e: any) {
         const { id, value } = e.target;
@@ -23,19 +24,27 @@ export function Cadastro(){
        
         if (erro) setErro('');
     }
-
-
-    function verificacao(){
-        if(!formatarDado.nome || !formatarDado.Email || !formatarDado.Senha || !formatarDado.confirmarSenha || !formatarDado.dataNascimento){
+    
+    function salvarDadosCadastro(){
+        if(!formatarDado.nome || !formatarDado.email || !formatarDado.senha || !formatarDado.confirmarSenha || !formatarDado.dataNascimento){
             setErro("Prencha todos os campos para pode continuar !!")
             return;
         }
 
  
-        if(formatarDado.Senha != formatarDado.confirmarSenha){
+        if(formatarDado.senha != formatarDado.confirmarSenha){
             setErro("As senhas não conhecidem")
             return;
         }
+
+        const dadosCadastro = {
+            nome: formatarDado.nome,
+            email: formatarDado.email,
+            senha: formatarDado.senha,
+            data: formatarDado.dataNascimento
+        }
+
+        localStorage.setItem('cadastro_usuario',JSON.stringify(dadosCadastro))
 
         navegacao("/tipoUser")
 
@@ -43,7 +52,6 @@ export function Cadastro(){
 
 
     return(
-
 
         <div className={styles.container}>
             <div className={styles.textoEsquerdo}>
@@ -70,18 +78,18 @@ export function Cadastro(){
                                 />
                             <label>Email</label>
                             <input 
-                                id='Email'
+                                id='email'
                                 type="Email" 
                                 placeholder="Seu email"
-                                value={formatarDado.Email}
+                                value={formatarDado.email}
                                 onChange={liberarcampo}
                                 />
                             <label>Senha</label>
                             <input 
-                                id='Senha'
+                                id='senha'
                                 type="password" 
                                 placeholder="Sua senha" 
-                                value={formatarDado.Senha}
+                                value={formatarDado.senha}
                                 onChange={liberarcampo}
                                 />
                             <label>Confirma senha</label>
@@ -100,7 +108,7 @@ export function Cadastro(){
                                 onChange={liberarcampo}
                                 />
                                 {erro && <span className={styles.mgErro}>{erro}</span>}
-                            <button type="button" onClick={verificacao}>Proximo</button>
+                            <button type="button" onClick={salvarDadosCadastro}>Proximo</button>
                         </form>
                     </div>
                 </div>

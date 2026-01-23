@@ -7,29 +7,54 @@ export function PacienteNaoVerbal(){
 
     const navegacao = useNavigate();
 
-    const [formatarDado, setFormatarDado] = useState({
-        Grau: '',
-        Cores: '',
-        Sons: '',
-    });
-
+    const [grau,setGrau] = useState('');
+    const [cores,setCores] = useState('');
+    const [sons, setSons] = useState('');
     const [erro, setErro] = useState('');
 
-    function liberarcampo(e: any) {
-        const { id, value } = e.target;
-        setFormatarDado({ ...formatarDado, [id]: value });
-       
-        if (erro) setErro('');
-    }
-
-
-    function verificacao(){
-        if(!formatarDado.Grau || !formatarDado.Cores || !formatarDado.Sons){
+    async function enviarDadoApi(){
+        if(!grau || !cores || !sons){
             setErro("Prencha todos os campos para pode continuar !!")
             return;
         }
 
-        navegacao("/finalizarCadastro")
+
+        const dadosCadastro = localStorage.getItem('cadastro_usuario' );
+
+        if(!dadosCadastro){
+            setErro("Nao foi possevel encontrar nenhum dado");
+            return;
+        }
+
+        const dadosPessoais = JSON.parse(dadosCadastro);
+
+        const dadosJuntos = {
+            nome: dadosPessoais.nome,
+            email: dadosPessoais.email,
+            senha: dadosPessoais.senha,
+            grau: grau,
+            cores: cores,
+            sons: sons
+        }
+
+
+        try{
+            const resposta = await fetch('http://localhost:8080/paciente', {
+                method: 'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify(dadosJuntos)
+            });
+              
+            if(resposta.ok){
+                localStorage.removeItem('cadastro_usuario')
+                navegacao('/finalizarCadastro')
+            }else{
+                setErro("Erro no cadastro")
+            }
+
+        }catch(error){
+            setErro("Falha de Conexão")
+        }
 
     }
 
@@ -54,30 +79,36 @@ export function PacienteNaoVerbal(){
                         <form className={styles.form}>
                             <label>Informe o Grau de Neuro divergência</label>
                             <input
-                                id='Grau' 
+                                id='grau' 
                                 type="number" 
                                 placeholder="Informe o Grau da Neuro Divergência"
-                                value={formatarDado.Grau}
-                                onChange={liberarcampo}
+                                value={grau}
+                                onChange={(e) => {setGrau(e.target.value);
+                                                  setErro('');
+                                    }}
                                 />
                             <label>Cores agradaveis para você</label>
                             <input 
-                                id='Cores'
+                                id='cores'
                                 type="text" 
                                 placeholder="Cores Agradaveis"
-                                value={formatarDado.Cores}
-                                onChange={liberarcampo}
+                                value={cores}
+                                onChange={(e) => {setCores(e.target.value);
+                                                  setErro('');
+                                    }}
                                 />
                             <label>Informe sons Agradaveis</label>
                             <input 
-                                id='Sons'
+                                id='sons'
                                 type="text" 
                                 placeholder="Fale seus sons que gosta de ouvir" 
-                                value={formatarDado.Sons}
-                                onChange={liberarcampo}
+                                value={sons}
+                                onChange={(e) => {setSons(e.target.value);
+                                                  setErro('');
+                                    }}
                                 />
                                 {erro && <span className={styles.mgErro}>{erro}</span>}
-                            <button type="button" onClick={verificacao}>Proximo</button>
+                            <button type="button" onClick={enviarDadoApi}>Proximo</button>
                         </form>
                     </div>
                 </div>

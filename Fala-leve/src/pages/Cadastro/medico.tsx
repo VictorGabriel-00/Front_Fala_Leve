@@ -7,30 +7,52 @@ export function Medico(){
 
     const navegacao = useNavigate();
 
-    const [formatarDado, setFormatarDado] = useState({
-        CRM: ''
-    });
+    const [Crm, setCrm] = useState('');
 
     const [erro, setErro] = useState('');
 
 
-    function liberarcampo(e: any) {
-        const { id, value } = e.target;
-        setFormatarDado({ ...formatarDado, [id]: value });
-       
-        if (erro) setErro('');
-    }
-
-
-    function verificacao(){
-        if(!formatarDado.CRM){
-            setErro("Prencha todos os dados para poder continuar")
+ 
+    async function enviarDadoApi(){
+        if(!Crm){
+            setErro("Prencha o CRM");
             return;
         }
 
-        if(formatarDado.CRM){
-            navegacao("/finalizarCadastro")
+        const dadosCadastro = localStorage.getItem('cadastro_usuario');
+
+        if(!dadosCadastro){
+            setErro("Nao foi encontrado nenhum dado");
+            return;
         }
+
+        const dadosPessoais = JSON.parse(dadosCadastro);
+
+        const dadosJuntos = {
+            nome: dadosPessoais.nome,
+            email: dadosPessoais.email,
+            senha: dadosPessoais.senha,
+            Crm: Crm
+        }
+
+        try{
+            const resposta = await fetch('http://localhost:8080/medico', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dadosJuntos) 
+            });
+
+            if(resposta.ok){
+                localStorage.removeItem('cadastro_usuario');
+                navegacao('/finalizarCadastro')
+            }else{
+                setErro("Erro no cadastro")
+            }
+
+        }catch(error){
+            setErro("Falha de conexão")
+        }
+
     }
 
     return(
@@ -53,13 +75,15 @@ export function Medico(){
                         <form className={styles.form}>
                             <label>CRM</label>
                             <input
-                                id= "CRM" 
+                                id= "Crm" 
                                 type="CRM" 
                                 placeholder="Informe o seu CRM"
-                                value={formatarDado.CRM}
-                                onChange={liberarcampo} />
+                                value={Crm}
+                                onChange={(e)=> {setCrm(e.target.value);
+                                                setErro('');
+                                }} />
                                 {erro && <span className={styles.mgErro}>{erro}</span>}
-                            <button type="button" onClick={verificacao}>Proximo</button>
+                            <button type="button" onClick={enviarDadoApi}>Proximo</button>
                         </form>
                     </div>
                 </div>

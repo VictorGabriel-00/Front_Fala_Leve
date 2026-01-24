@@ -11,7 +11,6 @@ export function ProntuarioPaciente() {
     }, []);
 
     async function carregarDados() {
-        // 1. Pega o ID do usuário logado no localStorage
         const usuarioLogado = JSON.parse(localStorage.getItem('usuario_logado') || '{}');
         const token = usuarioLogado.token;
         const id = usuarioLogado.id;
@@ -19,7 +18,6 @@ export function ProntuarioPaciente() {
         if (!id) return;
 
         try {
-            // Busca os detalhes completos no backend
             const response = await fetch(`http://localhost:8080/paciente/${id}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });

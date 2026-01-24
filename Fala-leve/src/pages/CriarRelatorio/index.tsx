@@ -28,7 +28,7 @@ export function EnviarRelatorio(){
 
                 <div className={styles.grupoBotoes}>
                     <button className={styles.botao}>
-                        Buscar
+                        Enviar
                     </button>
                 </div>
 

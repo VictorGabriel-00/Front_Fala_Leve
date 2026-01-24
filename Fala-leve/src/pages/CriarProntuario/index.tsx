@@ -4,13 +4,13 @@ import { Header } from '../../components/Header';
 import { MagnifyingGlass, UserPlus, CheckCircle } from '@phosphor-icons/react';
 import styles from './styles.module.css';
 
-export function CriarProntuario() { // Pode renomear para ProntuarioMedico se quiser
+export function CriarProntuario() { 
     const navigate = useNavigate();
     const [codigoBusca, setCodigoBusca] = useState('');
     const [paciente, setPaciente] = useState<any>(null);
     const [erro, setErro] = useState('');
 
-    // 1. BUSCAR PACIENTE
+    
     async function buscarPaciente() {
         if (!codigoBusca) return;
         const usuarioLogado = JSON.parse(localStorage.getItem('usuario_logado') || '{}');
@@ -33,7 +33,7 @@ export function CriarProntuario() { // Pode renomear para ProntuarioMedico se qu
         }
     }
 
-    // 2. ASSUMIR PACIENTE
+    
     async function handleAssumir() {
         const usuarioLogado = JSON.parse(localStorage.getItem('usuario_logado') || '{}');
         const idMedico = usuarioLogado.id;
@@ -46,7 +46,7 @@ export function CriarProntuario() { // Pode renomear para ProntuarioMedico se qu
 
             if (response.ok) {
                 alert("Sucesso! O paciente agora está na sua lista.");
-                navigate('/tela-inicial-medico'); // Volta para o início
+                navigate('/tela-inicial-medico'); 
             } else {
                 alert("Erro ao vincular.");
             }
@@ -61,7 +61,7 @@ export function CriarProntuario() { // Pode renomear para ProntuarioMedico se qu
             <main className={styles.content}>
                 <h1 className={styles.titulo}>Buscar Prontuário</h1>
 
-                {/* AREA DE BUSCA */}
+                
                 <div className={styles.searchBox}>
                     <input 
                         type="text" 
@@ -75,7 +75,7 @@ export function CriarProntuario() { // Pode renomear para ProntuarioMedico se qu
                 </div>
                 {erro && <p style={{color: 'red', marginTop: 10}}>{erro}</p>}
 
-                {/* RESULTADO DA BUSCA (CARD) */}
+               
                 {paciente && (
                     <div className={styles.cardResultado}>
                         <div className={styles.info}>

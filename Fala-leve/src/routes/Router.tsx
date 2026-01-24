@@ -7,6 +7,14 @@ import { PacienteNaoVerbal } from '../pages/Cadastro/pacienteNaoVerbal';
 import { FinalizarCadastro } from '../pages/Cadastro/finalizarCadastro';
 import { TelaInicioMedico } from '../pages/TelaInicioMedico';
 import { TelaInicioPaciente } from '../pages/TelaInicioPaciente';
+import { CriarProntuario } from '../pages/CriarProntuario';
+import { EnviarRelatorio } from '../pages/CriarRelatorio';
+import { ImportaArquivo } from '../pages/importaAudioPaciente';
+import { TelaSons } from '../pages/TelaSons';
+import { ProntuarioPaciente } from '../pages/PacienteProntuario';
+import { GerenciarUsuario } from '../pages/GerenciarPaciente';
+
+import { PrivateRota } from '../components/PrivateRoutes';
 
 export function Router (){
 
@@ -21,8 +29,53 @@ export function Router (){
             <Route path="/finalizarCadastro" element={<FinalizarCadastro/>} />
             
 
-            <Route path="/tela-inicial-medico" element={<TelaInicioMedico/>} />
-            <Route path="/tela-inicial-paciente" element={<TelaInicioPaciente/>} />
+            <Route path="/tela-inicial-medico" element={
+                <PrivateRota tipoPermitido='MEDICO'>
+                    <TelaInicioMedico/> 
+                </PrivateRota>
+            }/>
+
+            <Route path="/tela-inicial-paciente" element={
+                <PrivateRota tipoPermitido='PACIENTE'>
+                    <TelaInicioPaciente/> 
+                </PrivateRota>
+                }/>
+
+                <Route path='/tela-prontuario' element = {
+                    <PrivateRota tipoPermitido='PACIENTE'>
+                        <ProntuarioPaciente/>
+                    </PrivateRota>
+                }/>
+
+            <Route path='/tela-import-paciente' element={
+                <PrivateRota tipoPermitido='PACIENTE'>
+                    <ImportaArquivo/>
+                </PrivateRota>
+            }/>    
+
+            <Route path='/tela-sons' element={
+                <PrivateRota tipoPermitido='PACIENTE'>
+                    <TelaSons/>
+                </PrivateRota>
+            }/>
+
+            <Route path="/prontuario-medico" element={
+                <PrivateRota tipoPermitido='MEDICO'>
+                    <CriarProntuario/>
+                </PrivateRota>
+            
+            }/>
+            <Route path="/enviar-relatorio" element={
+                    <PrivateRota tipoPermitido='MEDICO'>
+                            <EnviarRelatorio/>
+                    </PrivateRota>
+                }/>
+
+            <Route path="/gerenciar-usuario" element={
+                <PrivateRota tipoPermitido='MEDICO'>
+                    <GerenciarUsuario/>
+                </PrivateRota>
+            } />   
 
         </Routes>
     )

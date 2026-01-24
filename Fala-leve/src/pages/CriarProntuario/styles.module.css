@@ -1,0 +1,74 @@
+.container{
+    background-color: var(--verde-claro);
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+}
+
+
+.content {
+    
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    padding: 2rem;
+    padding-bottom: 220px; 
+    box-sizing: border-box;
+}
+
+.searchBox {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+}
+.searchBox input { border: none; flex: 1; outline: none; font-size: 1.1rem; }
+.searchBox button { 
+    background: #4caf50; color: white; border: none; 
+    padding: 10px 20px; border-radius: 8px; cursor: pointer; 
+    display: flex; align-items: center; gap: 5px;
+}
+
+.cardResultado {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    animation: slideUp 0.3s ease;
+}
+
+.info h2 { color: #333; margin-bottom: 1rem; }
+.info p { color: #666; font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+.btnAssumir {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 15px;
+    background-color: #2f00ff; /* Azul para destaque */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.btnAssumir:hover { background-color: #1a00a0; }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

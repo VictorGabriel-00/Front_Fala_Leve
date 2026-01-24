@@ -1,128 +1,62 @@
 .container{
-    background-color: var(--azul-escuro);
+    background-color: var(--verde-claro);
     display: flex;
-    overflow: hidden;
     height: 100vh;
     width: 100%;
-
+    flex-direction: column;
 }
 
-.textoEsquerdo{
-    flex: 1;
-    color: var(--branco);
+
+.areaMenu{
+    flex: 1; 
+    display: flex;
+    align-items: flex-start; 
+    justify-content: center; 
+    padding: 2rem;
+}
+
+.menuLista{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding-left: 5rem;
-}
-
-.textoContent{
-  width: 100%;
-  max-width: 500px;
-  text-align: left;}
-
-.textoContent h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
-}
-
-
-.textoContent p {
-    font-size: 1.8rem;
-    opacity: 0.9;
-    margin-bottom: 0.2rem;
-    line-height: 1.4;
-}
-
-
-
-.sectionLogin{
-  flex: 1;  
-  border-radius: var(--border-radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 2rem;
-}
-
-
-.molduraCinza{
-    background-color: var(--cinza); 
-    padding: 1.5rem; 
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-    max-width: 400px;
+    gap: 2rem; 
     width: 100%;
-
+    max-width: 600px;
 }
 
-.card{
-  background-color: var(--card);
-  padding: 2rem;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--sombra);
-  width: 100%;
-  max-width: 350px;
-  padding: 1.5rem;
-}
 
-.card h2{
-    color: var(--azul-roxo);
-    margin-bottom: 1rem;
-}
-
-.form label {
-    color: var(--azul-roxo);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: -0.4rem; 
-}
-
-.form{
+.menuItem{
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form input {
-  padding: 0.8rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md);
-}
-
-.form button {
-  padding: 0.8rem;
-  background-color: var(--azul-escuro);
-  border-radius: var(--border-radius-lg);
-  color: var(--branco);
-  font-weight: bold;
-  margin-top: 0.5rem;
-  transition: filter 0.2s;
-}
-
-.form button:hover {
-  filter: brightness(0.9);
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    background: none;
+    border: none;
+    text-align: left;
 }
 
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0.6; 
+.menuItem:hover {
+    transform: translateX(10px); 
+    opacity: 0.9;
 }
 
-.mgErro{
-  color:brown;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  display: block;
-  animation: fadeIn 0.3s ease-in-out;
+.circuloItem {
+    background-color:var(--cinza); 
+    width: 110px;
+    height: 110px;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: var(--verde-escuro); 
 }
 
-@keyframes fadeIn{
-  from {opacity: 0; transform: translateY(-5px);}
-  to { opacity: 1; transform: translateY(0); }
+
+.texto {
+    font-size: 2rem; 
+    color: var(--branco);
+    font-weight: 500;
+    font-family: Abhaya Libre SemiBold;
 }

@@ -1,0 +1,67 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--verde-claro); /* Verde escuro do fundo */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.content {
+    padding: 2rem;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza a lista */
+}
+
+.titulo {
+    color: white;
+    font-size: 2rem;
+    align-self: flex-start; /* Alinha o título à esquerda como na foto */
+    margin-left: 10%; /* Um recuo para ficar bonito */
+    margin-bottom: 2rem;
+    font-weight: normal;
+}
+
+.listaPacientes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* O Cartão do Paciente (Foto + Nome) */
+.cardPaciente {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    /* Na sua foto não tem borda nem fundo, é 'transparente' mas alinhado */
+}
+
+.avatarContainer {
+    width: 80px;
+    height: 80px;
+    background-color: #ddd; /* Cor de fundo da bolinha caso não tenha foto */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid white; /* Borda branca fina se quiser destacar */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.avatarContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nomePaciente {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+}

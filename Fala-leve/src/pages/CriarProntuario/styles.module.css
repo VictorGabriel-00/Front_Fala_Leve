@@ -54,7 +54,7 @@
     width: 100%;
     margin-top: 1.5rem;
     padding: 15px;
-    background-color: #2f00ff; /* Azul para destaque */
+    background-color: #2f00ff; 
     color: white;
     border: none;
     border-radius: 12px;
@@ -72,3 +72,5 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+

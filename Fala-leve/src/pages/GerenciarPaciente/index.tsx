@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-
+import { API_URL } from '../../services/Api';
 
 interface Paciente {
     id: string;
@@ -27,7 +27,7 @@ export function GerenciarUsuario(){
         const idMedico = usuarioLogado.id;
 
         try {
-            const response = await fetch(`http://localhost:8080/medico/${idMedico}`, {
+            const response = await fetch(`${API_URL}/medico/${idMedico}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 

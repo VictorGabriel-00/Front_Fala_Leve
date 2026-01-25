@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from '../../components/Header';
 import { MagnifyingGlass, UserPlus, CheckCircle } from '@phosphor-icons/react';
 import styles from './styles.module.css';
+import { API_URL } from '../../services/Api';
 
 export function CriarProntuario() { 
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ export function CriarProntuario() {
         const usuarioLogado = JSON.parse(localStorage.getItem('usuario_logado') || '{}');
         
         try {
-            const response = await fetch(`http://localhost:8080/paciente/${codigoBusca}`, {
+            const response = await fetch(`${API_URL}/paciente/${codigoBusca}`, {
                 headers: { 'Authorization': `Bearer ${usuarioLogado.token}` }
             });
 
@@ -39,7 +40,7 @@ export function CriarProntuario() {
         const idMedico = usuarioLogado.id;
 
         try {
-            const response = await fetch(`http://localhost:8080/medico/${idMedico}/assumir/${paciente.id}`, {
+            const response = await fetch(`${API_URL}/medico/${idMedico}/assumir/${paciente.id}`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${usuarioLogado.token}` }
             });

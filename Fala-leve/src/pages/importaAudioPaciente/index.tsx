@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CloudArrowUp, CheckCircle, XCircle, SpeakerHigh, Play, Trash } from '@phosphor-icons/react';
 import { Header } from '../../components/Header';
 import styles from './styles.module.css';
+import { API_URL } from '../../services/Api';
 
 
 export function ImportaArquivo(){
@@ -74,7 +75,7 @@ export function ImportaArquivo(){
             const formDataImg = new FormData();
             formDataImg.append('file', arquivoImagem); 
 
-            const resImg = await fetch('http://localhost:8080/arquivo/upload', {
+            const resImg = await fetch(`${API_URL}/arquivo/upload`, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` },
                 body: formDataImg
@@ -86,7 +87,7 @@ export function ImportaArquivo(){
             const formDataAudio = new FormData();
             formDataAudio.append('file', arquivoAudio);
 
-            const resAudio = await fetch('http://localhost:8080/arquivo/upload', {
+            const resAudio = await fetch(`${API_URL}/arquivo/upload`, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` },
                 body: formDataAudio
@@ -101,11 +102,11 @@ export function ImportaArquivo(){
                 categoriaSimbolo: categoria,
                 tagsSimbolo: tags,
                 
-                URLImagemSimbolo: `http://localhost:8080${linkImagem}`,
-                URLaudioSimbolo: `http://localhost:8080${linkAudio}`
+                URLImagemSimbolo: `${API_URL}${linkImagem}`,
+                URLaudioSimbolo: `${API_URL}${linkAudio}`
             };
 
-            const resFinal = await fetch('http://localhost:8080/simbolo', {
+            const resFinal = await fetch(`${API_URL}/simbolo`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

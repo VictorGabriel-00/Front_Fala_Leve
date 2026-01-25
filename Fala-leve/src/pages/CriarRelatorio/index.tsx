@@ -3,8 +3,6 @@ import { Header } from '../../components/Header'
 import styles from './styles.module.css'
 import { useState } from 'react';
 
-
-
 export function EnviarRelatorio(){
     const navegacao = useNavigate();
 

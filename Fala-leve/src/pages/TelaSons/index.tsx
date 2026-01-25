@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Header } from '../../components/Header';
 import { SpeakerHigh, PlayCircle, PauseCircle, Trash } from '@phosphor-icons/react';
 import styles from './styles.module.css';
+import { API_URL } from '../../services/Api';
 
 interface Simbolo {
     idSimbolo: string;
@@ -29,7 +30,7 @@ export function TelaSons() {
         const token = usuarioLogado.token;
 
         try {
-            const response = await fetch('http://localhost:8080/simbolo', {
+            const response = await fetch(`${API_URL}/simbolo`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             
@@ -62,7 +63,7 @@ export function TelaSons() {
         const usuarioLogado = JSON.parse(localStorage.getItem('usuario_logado') || '{}');
 
         try {
-            const response = await fetch(`http://localhost:8080/simbolo/${id}`, {
+            const response = await fetch(`${API_URL}/simbolo/${id}`, {
                 method: 'DELETE',
                 headers: { 
                     'Authorization': `Bearer ${usuarioLogado.token}` 

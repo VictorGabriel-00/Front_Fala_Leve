@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Header } from '../../components/Header';
 import { AddressBook, Heart, MusicNotes, Palette } from '@phosphor-icons/react';
 import styles from './styles.module.css';
+import { API_URL } from '../../services/Api';
 
 export function ProntuarioPaciente() {
     const [dados, setDados] = useState<any>(null);
@@ -18,7 +19,7 @@ export function ProntuarioPaciente() {
         if (!id) return;
 
         try {
-            const response = await fetch(`http://localhost:8080/paciente/${id}`, {
+            const response = await fetch(`${API_URL}/paciente/${id}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();

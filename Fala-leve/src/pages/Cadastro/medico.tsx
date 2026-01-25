@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css'
 import { useState } from 'react';
-
+import { API_URL } from '../../services/Api';
 
 export function Medico(){
 
@@ -36,7 +36,7 @@ export function Medico(){
         }
 
         try{
-            const resposta = await fetch('http://localhost:8080/medico', {
+            const resposta = await fetch(`${API_URL}/medico`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dadosJuntos) 

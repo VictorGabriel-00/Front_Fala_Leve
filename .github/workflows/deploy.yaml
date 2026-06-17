@@ -50,6 +50,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             # Ajuste para a pasta onde você colocar o projeto na AWS
-            cd /var/www/falaleve
+            cd /var/app/falaleve
             docker compose pull
             docker compose up -d --remove-orphans

@@ -58,6 +58,7 @@ router.post('/paciente', async (req, res) => {
 
 // 2. Criar Medico
 router.post('/medico', async (req, res) => {
+  console.log("Recebido em /medico:", req.body);
   const { nome, email, senha, Crm } = req.body;
   const id = uuidv4();
 
@@ -68,9 +69,9 @@ router.post('/medico', async (req, res) => {
     await db.query('COMMIT');
 
     res.status(201).json({ id, nome, email });
-  } catch (error) {
+  } catch (error: any) {
     await db.query('ROLLBACK');
-    console.error(error);
+    console.error("DB Error in /medico:", error.message, error.stack);
     res.status(400).json({ error: 'Erro ao criar médico' });
   }
 });

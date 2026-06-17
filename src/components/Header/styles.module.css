@@ -1,0 +1,109 @@
+.headerContainer {
+    height: 80px;
+    background-color: var(--verde-escuro); 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 100; 
+}
+
+
+.menuBotao {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--azul-escuro, #333); 
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuBotao:hover {
+    transform: scale(1.1);
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+.ladoDireito {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; 
+}
+
+.iconeBotao {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.iconeBotao:hover {
+    color: var(--azul-roxo, #6200ea);
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.profil:hover {
+    background-color: #f5f5f5;
+}
+
+.profilNome {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.sidebar {
+    position: fixed;
+    top: 80px; 
+    left: -300px; 
+    width: 250px;
+    height: calc(100vh - 80px);
+    background-color:var(--verde-claro);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: left 0.3s ease-in-out;
+    padding: 2rem;
+    z-index: 99;
+}
+
+.sidebarAberta {
+    left: 0; 
+}
+
+.sidebarTitulo {
+    color: var(--azul-escuro, #333);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.sidebarLink {
+    display: block;
+    padding: 10px;
+    color: var(--azul-escuro);
+    text-decoration: none;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+.sidebarLink:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--azul-roxo, black);
+}
+
+

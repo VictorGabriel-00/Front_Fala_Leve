@@ -1,0 +1,66 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--verde-claro); 
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.content {
+    padding: 2rem;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.titulo {
+    color: white;
+    font-size: 2rem;
+    align-self: flex-start; 
+    margin-left: 10%; 
+    margin-bottom: 2rem;
+    font-weight: normal;
+}
+
+.listaPacientes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+
+.cardPaciente {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.avatarContainer {
+    width: 80px;
+    height: 80px;
+    background-color: #ddd; 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 3px solid white; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.avatarContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nomePaciente {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+}

@@ -1,0 +1,123 @@
+.container{
+    background-color: var(--azul-escuro);
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+
+}
+
+.textoEsquerdo{
+    flex: 1;
+    color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 5rem;
+}
+
+.textoContent{
+  width: 100%;
+  max-width: 500px;
+  text-align: left;}
+
+.textoContent h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+
+.textoContent p {
+    font-size: 1.8rem;
+    opacity: 0.9;
+    margin-bottom: 0.2rem;
+    line-height: 1.4;
+}
+
+
+
+.sectionLogin{
+  flex: 1;  
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 2rem;
+}
+
+
+.molduraCinza{
+    background-color: var(--cinza); 
+    padding: 1.5rem; 
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+    max-width: 400px;
+    width: 100%;
+
+}
+
+.card{
+  background-color: var(--card);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--sombra);
+  width: 100%;
+  max-width: 350px;
+  padding: 1.5rem;
+}
+
+.card h2{
+    color: var(--azul-roxo);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.form label {
+    color: var(--azul-roxo);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: -0.4rem; 
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form input {
+  padding: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+}
+
+.form button {
+  padding: 0.8rem;
+  background-color: var(--azul-escuro);
+  border-radius: var(--border-radius-lg);
+  color: var(--branco);
+  font-weight: bold;
+  margin-top: 0.5rem;
+  transition: filter 0.2s;
+}
+
+.form button:hover {
+  filter: brightness(0.9);
+}
+
+.mgErro{
+  color:brown;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn{
+  from {opacity: 0; transform: translateY(-5px);}
+  to { opacity: 1; transform: translateY(0); }
+}

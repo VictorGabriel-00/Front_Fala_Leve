@@ -12,6 +12,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   backend:
+    image: ${DOCKER_USERNAME}/falaleve-backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -26,6 +27,7 @@ services:
       - db
 
   frontend:
+    image: ${DOCKER_USERNAME}/falaleve-frontend:latest
     build:
       context: .
       dockerfile: Dockerfile

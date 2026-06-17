@@ -51,5 +51,20 @@ jobs:
           script: |
             # Ajuste para a pasta onde você colocar o projeto na AWS
             cd /var/app/falaleve
+            
+            export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
+            
+            # Puxa as atualizações do git para garantir que o docker-compose.yml está atualizado
+            git pull origin main
+            
+            # Derruba tudo o que está rodando atualmente
+            docker compose down
+            
+            # Puxa as novas imagens do Docker Hub geradas por essa Action
             docker compose pull
-            docker compose up -d --remove-orphans
+            
+            # Sobe os containers novamente
+            docker compose up -d --force-recreate
+            
+            # Remove imagens antigas que não estão em uso para liberar espaço
+            docker image prune -af
